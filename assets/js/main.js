@@ -275,43 +275,68 @@ const CONFIG = {
     hv.addEventListener("pointerleave", () => { stage.style.transform = ""; });
   }
 
-  /* ---------- Partículas de "fibras" (canvas) ---------- */
+  /* ---------- Pó se dissolvendo (canvas) ----------
+     Grãos finos sobem devagar e, no meio do caminho, se desfazem em um
+     anel de luz que se abre e some: o pó dissolvendo na bebida. */
   const css = getComputedStyle(document.documentElement);
   const SUN = css.getPropertyValue("--sun-rgb").trim() || "245,196,0";
-  const LEAF = css.getPropertyValue("--leaf-rgb").trim() || "140,220,160";
-  function fibers(canvas, opts) {
+  const LEAF = css.getPropertyValue("--leaf-rgb").trim() || "116,217,154";
+  const CREAM = css.getPropertyValue("--cream-rgb").trim() || "246,243,234";
+  function powder(canvas, opts) {
     if (!canvas || reduce) return;
     const ctx = canvas.getContext("2d");
     let w = 0, h = 0, dpr = 1, running = false, ps = [];
     const host = canvas.parentElement;
-    const count = () => Math.round((innerWidth < 720 ? opts.mobile : opts.desktop));
-    const make = init => ({
-      x: Math.random() * w, y: init ? Math.random() * h : h + 30 * dpr,
-      len: (Math.random() * 26 + 12) * dpr, a: Math.random() * Math.PI * 2, va: (Math.random() - 0.5) * 0.006,
-      vy: (Math.random() * 0.3 + 0.12) * dpr, sw: Math.random() * 0.8 + 0.3, ph: Math.random() * 6.28,
-      curl: (Math.random() - 0.5) * 0.9, gold: Math.random() < 0.22, o: Math.random() * 0.35 + 0.12, wd: (Math.random() * 1 + 0.8) * dpr,
-    });
+    const mobile = () => innerWidth < 900;
+    const pickColor = () => { const r = Math.random(); return r < 0.5 ? CREAM : r < 0.78 ? SUN : LEAF; };
+    // Concentra parte dos grãos ao redor do produto (lado direito no desktop)
+    const pickX = () => (!mobile() && Math.random() < opts.bias) ? w * (0.52 + Math.random() * 0.46) : Math.random() * w;
+    const make = init => {
+      const max = 320 + Math.random() * 380;
+      return {
+        x: pickX(), y: init ? Math.random() * h : h * (0.35 + Math.random() * 0.7),
+        r: (Math.random() * 1.9 + 1.4) * dpr, vy: (Math.random() * 0.3 + 0.14) * dpr,
+        sw: Math.random() * 0.6 + 0.2, ph: Math.random() * 6.28,
+        life: init ? Math.random() * max : 0, max, dis: 0.5 + Math.random() * 0.25,
+        c: pickColor(), o: Math.random() * 0.35 + 0.5, rings: Math.random() < 0.6 ? 1 : 2,
+      };
+    };
     function resize() {
       dpr = Math.min(devicePixelRatio || 1, 2);
       w = canvas.width = host.clientWidth * dpr; h = canvas.height = host.clientHeight * dpr;
-      const n = count();
-      ps = Array.from({ length: n }, () => make(true));
+      ps = Array.from({ length: mobile() ? opts.mobile : opts.desktop }, () => make(true));
     }
     let t = 0;
     function frame() {
       if (!running) return;
-      t += 0.016; ctx.clearRect(0, 0, w, h); ctx.lineCap = "round";
+      t += 0.016; ctx.clearRect(0, 0, w, h);
       for (let i = 0; i < ps.length; i++) {
         const p = ps[i];
-        p.y -= p.vy; p.a += p.va;
-        const x = p.x + Math.sin(t * p.sw + p.ph) * 16 * dpr;
-        if (p.y < -40 * dpr) { ps[i] = make(false); continue; }
-        const fade = Math.min(1, p.y / (h * 0.2)) * Math.min(1, (h - p.y) / (h * 0.15) + 0.2);
-        const dx = Math.cos(p.a) * p.len / 2, dy = Math.sin(p.a) * p.len / 2;
-        const cx = x - dy * p.curl, cy = p.y + dx * p.curl;
-        ctx.strokeStyle = p.gold ? `rgba(${SUN},${p.o * fade})` : `rgba(${LEAF},${p.o * fade})`;
-        ctx.lineWidth = p.wd;
-        ctx.beginPath(); ctx.moveTo(x - dx, p.y - dy); ctx.quadraticCurveTo(cx, cy, x + dx, p.y + dy); ctx.stroke();
+        p.life++; p.y -= p.vy;
+        const k = p.life / p.max;
+        if (k >= 1 || p.y < -20 * dpr) { ps[i] = make(false); continue; }
+        const x = p.x + Math.sin(t * p.sw + p.ph) * 10 * dpr;
+        const edge = Math.min(1, p.y / (h * 0.12));
+        if (k < p.dis) {
+          // grão: ponto sólido com leve brilho
+          const a = p.o * Math.min(1, k / 0.12) * edge;
+          const g = ctx.createRadialGradient(x, p.y, 0, x, p.y, p.r * 3.2);
+          g.addColorStop(0, `rgba(${p.c},${a})`); g.addColorStop(0.35, `rgba(${p.c},${a * 0.55})`); g.addColorStop(1, `rgba(${p.c},0)`);
+          ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, p.y, p.r * 3.2, 0, 6.283); ctx.fill();
+        } else {
+          // dissolução: o grão encolhe e abre um anel que se desfaz
+          const q = (k - p.dis) / (1 - p.dis), ease = 1 - Math.pow(1 - q, 3);
+          const a = p.o * Math.pow(1 - q, 1.6) * edge;
+          const core = p.r * (1 - q);
+          if (core > 0.2) { ctx.fillStyle = `rgba(${p.c},${a})`; ctx.beginPath(); ctx.arc(x, p.y, core, 0, 6.283); ctx.fill(); }
+          for (let j = 0; j < p.rings; j++) {
+            const qq = Math.max(0, ease - j * 0.22);
+            if (!qq) continue;
+            ctx.strokeStyle = `rgba(${p.c},${a * (1 - j * 0.35)})`;
+            ctx.lineWidth = Math.max(0.6 * dpr, p.r * 0.8 * (1 - q * 0.7));
+            ctx.beginPath(); ctx.arc(x, p.y, p.r + qq * p.r * 7, 0, 6.283); ctx.stroke();
+          }
+        }
       }
       requestAnimationFrame(frame);
     }
@@ -324,6 +349,6 @@ const CONFIG = {
     io.observe(host);
     document.addEventListener("visibilitychange", () => { if (document.hidden) running = false; else { io.unobserve(host); io.observe(host); } });
   }
-  fibers($("#fibers"), { desktop: 46, mobile: 22 });
-  fibers($("#fibers2"), { desktop: 32, mobile: 16 });
+  powder($("#fibers"), { desktop: 62, mobile: 28, bias: 0.55 });
+  powder($("#fibers2"), { desktop: 44, mobile: 20, bias: 0.5 });
 })();
