@@ -36,5 +36,5 @@ python3 -m http.server 8000
 
 ## Após o deploy
 
-- Troque `og:image` em `index.html` pela URL absoluta (ex.: `https://SEU-DOMINIO/assets/img/og-image.jpg`). Facebook e WhatsApp exigem URL absoluta na prévia do link.
+- Publicado em https://lp.multvit.com.br (Vercel). `og:image`, `og:url` e canonical já apontam para esse domínio.
 - Depoimentos usam iniciais no lugar das fotos. Ao receber as fotos, troque o `<span class="avatar">` por `<img class="avatar" …>`.
