@@ -9,7 +9,7 @@ const CONFIG = {
     2: "https://www.multvit.com.br/produtos/combo-2-multvit-fiber-se7e-400g/",
     4: "https://www.multvit.com.br/produtos/combo-4-multvit-fiber-se7e-400g/",
   },
-  whatsapp: "https://wa.me/5544998057273?text=" + encodeURIComponent("Olá! Tenho interesse no Fiber SE7E e gostaria de tirar algumas dúvidas."),
+  whatsapp: "https://wa.me/554498400223?text=" + encodeURIComponent("Olá! Tenho interesse no Fiber SE7E e gostaria de tirar algumas dúvidas."),
   metaPixelId: "1365038310604549",
   clarityId: "u1ojh44jk2",
   // Efeito de fundo do hero e do CTA final: "folhas" (folhas do logo caindo) ou "po" (pó se dissolvendo)
@@ -53,7 +53,7 @@ const CONFIG = {
   $$(".js-buy").forEach(a => {
     const kit = a.dataset.kit;
     a.href = CONFIG.checkout[kit];
-    a.addEventListener("click", () => track("InitiateCheckout", { content_name: `Fiber SE7E - ${kit} pote(s)`, value: parseFloat(a.dataset.value), currency: "BRL" }));
+    a.addEventListener("click", () => track("ViewContent", { content_name: `Fiber SE7E - ${kit} pote(s)`, content_type: "product", value: parseFloat(a.dataset.value), currency: "BRL" }));
   });
   const year = $("#year"); if (year) year.textContent = new Date().getFullYear();
 

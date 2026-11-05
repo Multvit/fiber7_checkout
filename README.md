@@ -23,7 +23,7 @@ Tudo no topo de `assets/js/main.js`:
 |---|---|
 | Links de compra (1, 2 e 4 potes) | `CONFIG.checkout` |
 | WhatsApp e mensagem inicial | `CONFIG.whatsapp` |
-| Meta Pixel (PageView, Contact, InitiateCheckout) | `CONFIG.metaPixelId` |
+| Meta Pixel (PageView, Contact, ViewContent) | `CONFIG.metaPixelId` |
 | Microsoft Clarity | `CONFIG.clarityId` |
 
 Preços, depoimentos e textos ficam em `index.html`.

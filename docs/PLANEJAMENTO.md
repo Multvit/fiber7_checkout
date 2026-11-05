@@ -49,7 +49,7 @@ Mix de fibras solúveis (polidextrose, goma guar) e insolúveis (fibra de trigo,
 **Regulatório / empresa**
 - Notificação Anvisa: 25351.099768/2026-11 (alimento notificado) — S3.
 - Fabricante: T G Pereira Ltda — CNPJ 04.529.592/0001-94 — Terra Roxa/PR.
-- Telefone (44) 3645-2286 · multvit.com.br · WhatsApp (44) 99805-7273 (Seg–Sex, 8h–18h) — S2.
+- Telefone (44) 3645-2286 · multvit.com.br · WhatsApp (44) 9840-0223 (Seg–Sex, 8h–18h) — atualizado pelo cliente (antes: (44) 99805-7273, S2).
 - Avisos: não é medicamento; não substitui refeições; gestantes, lactantes e crianças até 4 anos: orientação profissional (S1, S3).
 
 **Nova embalagem (S2)** — mudou: design, cores, hierarquia do rótulo, posicionamento Multvit. Não mudou: fórmula, sabor/textura/diluição, rendimento, **código de barras (EAN)**. As duas embalagens podem coexistir no varejo durante a transição.
