@@ -34,7 +34,7 @@ Mix de fibras solúveis (polidextrose, goma guar) e insolúveis (fibra de trigo,
 
 | | Adulto > 19 anos — porção 20 g (2 scoops), 20 porções/emb. | %VD | Criança 4–8 anos — porção 10 g (1 scoop), 40 porções/emb. | %VD |
 |---|---|---|---|---|
-| Valor energético | 46 kcal | 2 | 23 kcal | 2 |
+| Valor energético | 36 kcal | 2 | 18 kcal | 1 |
 | Carboidratos | 6 g | 2 | 3 g | 1 |
 | Proteínas | 2 g | 4 | 1 g | 3 |
 | **Fibras alimentares** | **8 g** | **32** | **4 g** | **16** |
@@ -65,7 +65,7 @@ Mix de fibras solúveis (polidextrose, goma guar) e insolúveis (fibra de trigo,
 | # | Ponto | S1 | S2 | S3 | Rótulo | Decisão proposta |
 |---|---|---|---|---|---|---|
 | 1 | Nome | Fiber7 | Fiber Se7e | Fiber SE7E | **Fiber SE7E** | Usar "Fiber SE7E" |
-| 2 | Calorias | "22 kcal por porção" | — | 46 kcal/porção | **46 kcal (20 g) / 23 kcal (10 g)** | Usar o rótulo |
+| 2 | Calorias | "22 kcal por porção" | — | 46 kcal/porção | **36 kcal (20 g) / 18 kcal (10 g)** (tabela atualizada enviada pelo cliente) | Usar a tabela atualizada |
 | 3 | Ingredientes | inclui amido resistente | — | inclui amido resistente | **sem amido resistente** | Usar o rótulo (nova embalagem) |
 | 4 | Açúcar | "Zero açúcar" | "Sem adição de açúcar" | — | "não contém quantidade significativa de açúcares…" | Usar a frase do rótulo |
 | 5 | Duração do pote | "1 pote – 30 dias" | — | 400 g = 40 porções adulto (!) | 400 g = **20 porções adulto / 40 infantis** | S3 erra; usar o rótulo. "30 dias" removido |
