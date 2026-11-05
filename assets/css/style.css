@@ -77,6 +77,8 @@ svg use { pointer-events: none; }
   background: rgba(var(--cream-rgb), 0.07); border: 1px solid var(--line-d);
 }
 .eyebrow-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sun); box-shadow: 0 0 0 4px rgba(var(--sun-rgb), 0.18); }
+.eyebrow-25 { display: inline-flex; align-items: baseline; gap: 3px; margin: -2px 2px -2px -4px; padding: 3px 9px 3px 8px; border-radius: 99px; background: var(--sun); color: var(--forest); font-family: var(--display); font-weight: 700; font-size: 13px; letter-spacing: -0.01em; text-transform: none; box-shadow: 0 0 0 4px rgba(var(--sun-rgb), 0.16); }
+.eyebrow-25 small { font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
 
 /* ---------- Botões ---------- */
 .btn {
@@ -212,7 +214,8 @@ svg use { pointer-events: none; }
 
 /* ---------- Prova social ---------- */
 .proof { background: var(--paper); border-bottom: 1px solid var(--line); }
-.proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+.proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.proof-25 strong { color: var(--green); }
 .proof-item { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 44px 16px; text-align: center; }
 .proof-item + .proof-item { border-left: 1px solid var(--line); }
 .proof-item strong { display: inline-flex; align-items: center; gap: 6px; font-family: var(--display); font-weight: 620; font-size: clamp(40px, 4.4vw, 58px); line-height: 1; color: var(--forest); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
@@ -456,6 +459,8 @@ svg use { pointer-events: none; }
 .footer { background: var(--ink); color: rgba(var(--cream-rgb), 0.62); padding: 72px 0 calc(32px + env(safe-area-inset-bottom)); font-size: 14.5px; }
 .f-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; padding-bottom: 44px; border-bottom: 1px solid var(--line-d); }
 .f-brand img { width: 170px; height: auto; margin-bottom: 16px; }
+.f-25 { margin-bottom: 6px; color: var(--cream); font-family: var(--display); font-weight: 600; font-size: 18px; letter-spacing: -0.01em; }
+.f-25 span { color: var(--sun); }
 .f-col { display: flex; flex-direction: column; gap: 10px; }
 .f-col a { transition: color 0.25s; }
 .f-col a:hover { color: var(--sun); }
@@ -514,7 +519,10 @@ svg use { pointer-events: none; }
   .hero-scroll { display: none; }
   .hero-leaf { width: 90vw; right: -30vw; bottom: -30vw; }
 
-  .proof-item { padding: 30px 8px; }
+  .proof-grid { grid-template-columns: repeat(2, 1fr); }
+  .proof-item { padding: 26px 8px; }
+  .proof-item:nth-child(3) { border-left: 0; }
+  .proof-item:nth-child(n+3) { border-top: 1px solid var(--line); }
   .proof-item > span { font-size: 12.5px; }
 
   .problem-grid, .compo-grid, .steps, .kit-grid { grid-template-columns: 1fr; }
