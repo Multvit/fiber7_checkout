@@ -5,9 +5,9 @@
 /* ===================== CONFIGURAÇÃO ===================== */
 const CONFIG = {
   checkout: {
-    1: "https://multvit.com.br/checkout/40061392:1",
-    2: "https://multvit.com.br/checkout/89362367:1",
-    4: "https://multvit.com.br/checkout/89362747:1",
+    1: "https://www.multvit.com.br/produtos/fiberse7e/",
+    2: "https://www.multvit.com.br/produtos/combo-2-multvit-fiber-se7e-400g/",
+    4: "https://www.multvit.com.br/produtos/combo-4-multvit-fiber-se7e-400g/",
   },
   whatsapp: "https://wa.me/5544998057273?text=" + encodeURIComponent("Olá! Tenho interesse no Fiber SE7E e gostaria de tirar algumas dúvidas."),
   metaPixelId: "1365038310604549",

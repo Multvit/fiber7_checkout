@@ -21,7 +21,7 @@ Tudo no topo de `assets/js/main.js`:
 
 | Item | Chave |
 |---|---|
-| Links de checkout (1, 2 e 4 potes) | `CONFIG.checkout` |
+| Links de compra (1, 2 e 4 potes) | `CONFIG.checkout` |
 | WhatsApp e mensagem inicial | `CONFIG.whatsapp` |
 | Meta Pixel (PageView, Contact, InitiateCheckout) | `CONFIG.metaPixelId` |
 | Microsoft Clarity | `CONFIG.clarityId` |

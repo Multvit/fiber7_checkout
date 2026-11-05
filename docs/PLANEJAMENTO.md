@@ -55,7 +55,8 @@ Mix de fibras solúveis (polidextrose, goma guar) e insolúveis (fibra de trigo,
 **Nova embalagem (S2)** — mudou: design, cores, hierarquia do rótulo, posicionamento Multvit. Não mudou: fórmula, sabor/textura/diluição, rendimento, **código de barras (EAN)**. As duas embalagens podem coexistir no varejo durante a transição.
 
 **Comercial (S1 — precisa de confirmação)**
-- 1 pote: de R$ 69,90 por **R$ 64,90** · 2 potes: de R$ 139,80 por **R$ 118,83** (15% off, frete grátis SP/PR/SC/RS) · 4 potes: de R$ 279,60 por **R$ 209,70** (25% off, frete grátis SP/PR/SC/RS).
+- **Atualizado pelo cliente:** 1 pote **R$ 79,90** · 2 potes de R$ 159,80 por **R$ 129,90** (−19%) · 4 potes de R$ 319,60 por **R$ 229,90** (−28%). Links: páginas de produto em multvit.com.br/produtos/ (fiberse7e, combo-2-…, combo-4-…).
+- Original do S1: 1 pote de R$ 69,90 por R$ 64,90 · 2 potes de R$ 139,80 por R$ 118,83 · 4 potes de R$ 279,60 por R$ 209,70.
 - Checkout: `multvit.com.br/checkout/40061392:1`, `…/89362367:1`, `…/89362747:1`.
 - Garantia de 7 dias com devolução de 100%. Envio para todo o Brasil.
 - Rodapé do S1 diz © 2025 — preços podem estar desatualizados.

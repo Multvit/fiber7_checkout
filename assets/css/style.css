@@ -410,6 +410,7 @@ svg use { pointer-events: none; }
 .kit:hover .kp-4 img:nth-child(1) { transform: translate(-50%, -14%) scale(0.72) rotate(-5deg); }
 .kit:hover .kp-4 img:nth-child(2) { transform: translate(50%, -14%) scale(0.72) rotate(5deg); }
 .kit-old { font-size: 14.5px; color: var(--muted); text-decoration: line-through; text-decoration-thickness: 1px; }
+.kit-old-none { text-decoration: none; font-family: var(--label); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
 .kit-featured .kit-old { color: rgba(var(--cream-rgb), 0.55); }
 .kit-off { display: inline-block; margin-left: 6px; padding: 2px 8px; border-radius: 6px; background: var(--green); color: #fff; font-family: var(--label); font-size: 12px; text-decoration: none; }
 .kit-price { font-weight: 650; font-family: var(--display); font-size: 68px; line-height: 1; letter-spacing: -0.04em; color: var(--forest); margin: 6px 0 22px; font-variant-numeric: lining-nums; }
