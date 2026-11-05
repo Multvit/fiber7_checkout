@@ -12,6 +12,8 @@ const CONFIG = {
   whatsapp: "https://wa.me/5544998057273?text=" + encodeURIComponent("Olá! Tenho interesse no Fiber SE7E e gostaria de tirar algumas dúvidas."),
   metaPixelId: "1365038310604549",
   clarityId: "u1ojh44jk2",
+  // Efeito de fundo do hero e do CTA final: "folhas" (folhas do logo caindo) ou "po" (pó se dissolvendo)
+  particulas: "folhas",
 };
 /* ======================================================== */
 
@@ -349,6 +351,72 @@ const CONFIG = {
     io.observe(host);
     document.addEventListener("visibilitychange", () => { if (document.hidden) running = false; else { io.unobserve(host); io.observe(host); } });
   }
-  powder($("#fibers"), { desktop: 62, mobile: 28, bias: 0.55 });
-  powder($("#fibers2"), { desktop: 44, mobile: 20, bias: 0.5 });
+
+  /* ---------- Folhas do logo caindo (canvas) ----------
+     Silhuetas da folha da Multvit descem devagar, balançando e girando
+     em 3D (o giro achata a folha, como uma folha de verdade virando). */
+  function leaves(canvas, opts) {
+    if (!canvas || reduce) return;
+    const ctx = canvas.getContext("2d");
+    let w = 0, h = 0, dpr = 1, running = false, ps = [];
+    const host = canvas.parentElement;
+    const mobile = () => innerWidth < 900;
+    const pickColor = () => { const r = Math.random(); return r < 0.6 ? LEAF : r < 0.85 ? CREAM : SUN; };
+    const make = init => ({
+      x: Math.random() * w, y: init ? Math.random() * h : -30 * dpr,
+      s: (Math.random() * 9 + 7) * dpr, vy: (Math.random() * 0.35 + 0.22) * dpr,
+      sw: Math.random() * 0.5 + 0.25, amp: (Math.random() * 30 + 18) * dpr, ph: Math.random() * 6.28,
+      rot: Math.random() * 6.28, vr: (Math.random() - 0.5) * 0.012,
+      flip: Math.random() * 6.28, vf: Math.random() * 0.02 + 0.008,
+      c: pickColor(), o: Math.random() * 0.22 + 0.14, outline: Math.random() < 0.45,
+    });
+    // folha: ponta afilada, base arredondada e nervura central (como no logo)
+    function leaf(p, x, y) {
+      const k = p.s, sx = Math.cos(p.flip);
+      ctx.save(); ctx.translate(x, y); ctx.rotate(p.rot); ctx.scale(Math.max(0.15, Math.abs(sx)), 1);
+      ctx.beginPath();
+      ctx.moveTo(0, -k);
+      ctx.bezierCurveTo(k * 0.9, -k * 0.55, k * 0.75, k * 0.6, 0, k);
+      ctx.bezierCurveTo(-k * 0.75, k * 0.6, -k * 0.9, -k * 0.55, 0, -k);
+      const a = p.o * Math.min(1, (h - y) / (h * 0.12) + 0.1);
+      if (p.outline) { ctx.strokeStyle = `rgba(${p.c},${a * 1.6})`; ctx.lineWidth = 1.1 * dpr; ctx.stroke(); }
+      else { ctx.fillStyle = `rgba(${p.c},${a})`; ctx.fill(); }
+      ctx.beginPath(); ctx.moveTo(0, -k * 0.7); ctx.quadraticCurveTo(k * 0.12, 0, 0, k * 1.25);
+      ctx.strokeStyle = `rgba(${p.c},${a * 1.4})`; ctx.lineWidth = 0.9 * dpr; ctx.stroke();
+      ctx.restore();
+    }
+    function resize() {
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      w = canvas.width = host.clientWidth * dpr; h = canvas.height = host.clientHeight * dpr;
+      ps = Array.from({ length: mobile() ? opts.mobile : opts.desktop }, () => make(true));
+    }
+    let t = 0;
+    function frame() {
+      if (!running) return;
+      t += 0.016; ctx.clearRect(0, 0, w, h);
+      for (let i = 0; i < ps.length; i++) {
+        const p = ps[i];
+        p.y += p.vy; p.rot += p.vr + Math.sin(t * p.sw + p.ph) * 0.004; p.flip += p.vf;
+        if (p.y > h + 30 * dpr) { ps[i] = make(false); continue; }
+        leaf(p, p.x + Math.sin(t * p.sw + p.ph) * p.amp, p.y);
+      }
+      requestAnimationFrame(frame);
+    }
+    resize();
+    let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(resize, 200); });
+    const io = new IntersectionObserver(([e]) => {
+      const vis = e.isIntersecting && !document.hidden;
+      if (vis && !running) { running = true; requestAnimationFrame(frame); } else if (!vis) running = false;
+    });
+    io.observe(host);
+    document.addEventListener("visibilitychange", () => { if (document.hidden) running = false; else { io.unobserve(host); io.observe(host); } });
+  }
+
+  if (CONFIG.particulas === "po") {
+    powder($("#fibers"), { desktop: 62, mobile: 28, bias: 0.55 });
+    powder($("#fibers2"), { desktop: 44, mobile: 20, bias: 0.5 });
+  } else {
+    leaves($("#fibers"), { desktop: 26, mobile: 12 });
+    leaves($("#fibers2"), { desktop: 18, mobile: 9 });
+  }
 })();
