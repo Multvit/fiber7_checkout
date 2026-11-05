@@ -211,7 +211,7 @@ const CONFIG = {
   /* ---------- Contadores ---------- */
   function countUp(el) {
     const to = parseFloat(el.dataset.to), dec = parseInt(el.dataset.dec || "0", 10);
-    const fmt = v => v.toFixed(dec).replace(".", ",");
+    const fmt = v => v.toLocaleString("pt-BR", { minimumFractionDigits: dec, maximumFractionDigits: dec });
     if (reduce || !M) { el.textContent = fmt(to); return; }
     M.animate(0, to, { duration: 1.6, ease: [0.16, 1, 0.3, 1], onUpdate: v => { el.textContent = fmt(v); } });
   }
