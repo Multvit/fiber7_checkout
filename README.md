@@ -10,7 +10,7 @@ index.html                 página
 assets/css/style.css       estilos (tokens no topo)
 assets/js/main.js          interações, motion e tracking (CONFIG no topo)
 assets/vendor/motion.min.js Motion (motion.dev) 11.11.17, servido localmente
-assets/fonts/              Fraunces, Plus Jakarta Sans, JetBrains Mono (woff2, latin)
+assets/fonts/              Bricolage Grotesque (títulos) e Figtree (texto), woff2 latin
 assets/img/                imagens otimizadas (WebP responsivo), logos, favicon, og-image
 assets/img/original/       imagens originais recebidas
 ```

@@ -1,7 +1,7 @@
 # Landing Page Fiber SE7E — Análise e Planejamento (Fases 1 a 5)
 
 > Status: **aprovado e implementado** (Fases 6 e 7 concluídas). Decisões do cliente: preços do S1 mantidos; sem versão 200 g; depoimentos e prova social do S1 liberados; garantia 7 dias e frete grátis SP/PR/SC/RS válidos; sem bloco para lojistas; Pixel + Clarity mantidos; logo recolorido.
-> Data: 05/11/2026
+> Data: 05/11/2026 · Revisão 2: nova tipografia, paleta Esmeralda, primeira dobra sem "8 g por porção".
 
 ---
 
@@ -162,20 +162,19 @@ Sem depoimentos e sem números de prova social, salvo se você enviar material v
 ### Direção criativa: "Botânica clínica"
 Nem o "preto + ouro" das referências, nem o verde-limão genérico do S1. Uma linguagem editorial, clara e premium, que nasce da embalagem: o verde profundo da tampa-faixa, o amarelo do selo SE7E e o creme como respiro.
 
-**Paleta (extraída do logo e da embalagem)**
+**Paleta "Esmeralda" (revisão 2 — escolhida após teste de 4 verdes)**
 | Token | Cor | Uso |
 |---|---|---|
-| `--forest` | `#053A1E` | Fundos escuros, texto de destaque |
-| `--green` | `#009947` | Verde Multvit (logo `5.jpg`) — ações, ícones |
-| `--leaf` | `#5CC27A` | Detalhes, gráficos |
+| `--deep` / `--forest` / `--forest-2` | `#00301B` / `#00552F` / `#00703D` | Fundos escuros em degradê |
+| `--green` | `#10A14F` | Ações, ícones, destaques |
+| `--leaf` | `#74D99A` | Detalhes, gráficos, partículas |
 | `--sun` | `#F5C400` | Amarelo SE7E — CTA principal, números |
 | `--cream` | `#F6F3EA` | Fundo base |
 | `--ink` | `#0E1A12` | Texto |
 
-**Tipografia**
-- Display: **Fraunces** (serifa variável, itálico suave — dialoga com o "Fiber" manuscrito da embalagem).
-- Texto/UI: **Plus Jakarta Sans**.
-- Dados (tabela, doses, %VD): **JetBrains Mono** com números tabulares.
+**Tipografia (revisão 2)**
+- Títulos: **Bricolage Grotesque** (grotesca com personalidade, calorosa, contemporânea — combina com o logo arredondado da Multvit).
+- Texto, UI e rótulos: **Figtree** (geométrica amigável, ótima legibilidade, números tabulares na tabela).
 - Escala fluida com `clamp()`; altura de linha e medida (≈ 60 caracteres) controladas.
 
 **Elementos gráficos próprios**

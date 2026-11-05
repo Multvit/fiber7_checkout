@@ -276,6 +276,9 @@ const CONFIG = {
   }
 
   /* ---------- Partículas de "fibras" (canvas) ---------- */
+  const css = getComputedStyle(document.documentElement);
+  const SUN = css.getPropertyValue("--sun-rgb").trim() || "245,196,0";
+  const LEAF = css.getPropertyValue("--leaf-rgb").trim() || "140,220,160";
   function fibers(canvas, opts) {
     if (!canvas || reduce) return;
     const ctx = canvas.getContext("2d");
@@ -306,7 +309,7 @@ const CONFIG = {
         const fade = Math.min(1, p.y / (h * 0.2)) * Math.min(1, (h - p.y) / (h * 0.15) + 0.2);
         const dx = Math.cos(p.a) * p.len / 2, dy = Math.sin(p.a) * p.len / 2;
         const cx = x - dy * p.curl, cy = p.y + dx * p.curl;
-        ctx.strokeStyle = p.gold ? `rgba(245,196,0,${p.o * fade})` : `rgba(140,220,160,${p.o * fade})`;
+        ctx.strokeStyle = p.gold ? `rgba(${SUN},${p.o * fade})` : `rgba(${LEAF},${p.o * fade})`;
         ctx.lineWidth = p.wd;
         ctx.beginPath(); ctx.moveTo(x - dx, p.y - dy); ctx.quadraticCurveTo(cx, cy, x + dx, p.y + dy); ctx.stroke();
       }
