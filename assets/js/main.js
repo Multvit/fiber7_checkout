@@ -231,7 +231,6 @@ const CONFIG = {
     animate(".hv-product", { opacity: [0, 1], filter: ["blur(16px)", "blur(0px)"] }, { duration: 0.9, delay: 0.2, ease });
     animate(".hv-ring", { opacity: [0, 1] }, { duration: 1.4, delay: 0.7 });
     animate(".hv-orbit", { opacity: [0, 1] }, { duration: 1.2, delay: 0.9 });
-    animate(".chip", { opacity: [0, 1], transform: ["translateZ(100px) scale(.6) translateY(16px)", "translateZ(100px) scale(1) translateY(0px)"] }, { type: "spring", stiffness: 140, damping: 15, delay: stagger(0.16, { startDelay: 1.0 }) });
 
     // Títulos de seção: palavra por palavra ao entrar
     $$(".split").forEach(t => {
